@@ -19,6 +19,11 @@ juegos.forEach((precioJuegos) => {
 
 // listener filters
 
+document.addEventListener('DOMContentLoaded',()=>{
+    arraycards=JSON.parse(localStorage.getItem('carrito')) || [];
+    inyectandoJUego()
+})
+
 precioJuego.addEventListener('input', e=>{
     parametros.precio = e.target.value
     filtrarTodo()
@@ -228,6 +233,7 @@ function inyectandoJUego() {
     `
     tbodie.appendChild(row)
     })
+    addstorage()
 }
 
 function limpiarCarrito(){
@@ -238,3 +244,7 @@ function clearJuego() {
     tbodie.innerHTML="";
 }
 //Nuevo
+
+function addstorage() {
+    localStorage.setItem('carrito',JSON.stringify(arraycards))
+}
